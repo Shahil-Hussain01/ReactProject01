@@ -1,8 +1,9 @@
 import React from "react";
+import classes from "./InvestmentTable.module.css";
 
 const InvestmentTable = (props) => {
   return (
-    <table className="result">
+    <table className={classes.result}>
       <thead>
         <tr>
           <th>Year</th>
