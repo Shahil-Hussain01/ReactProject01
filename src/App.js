@@ -15,6 +15,13 @@ function App() {
     setIsCalculated(false);
   };
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
   const calculateHandler = (userInput) => {
     const yearlyData = [];
     let currentSavings = +userInput.currentSavings;
@@ -31,10 +38,10 @@ function App() {
       totalInvestedCapital += yearlyContribution;
       yearlyData.push({
         year: i + 1,
-        savingsEndOfYear: parseFloat(currentSavings.toFixed(2)),
-        yearlyInterest: parseFloat(yearlyInterest.toFixed(2)),
-        totalInterestGain: parseFloat(totalInterestGain.toFixed(2)),
-        totalInvestedCapital: parseFloat(totalInvestedCapital.toFixed(2)),
+        savingsEndOfYear: formatter.format(currentSavings),
+        yearlyInterest: formatter.format(yearlyInterest),
+        totalInterestGain: formatter.format(totalInterestGain),
+        totalInvestedCapital: formatter.format(totalInvestedCapital),
       });
     }
     setInvestmentInfo(yearlyData);
